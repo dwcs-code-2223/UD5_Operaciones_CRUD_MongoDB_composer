@@ -20,5 +20,6 @@ $oid = $updateResult->getUpsertedId();
 $upsertedDocument = $collection->findOne([
     '_id' =>$oid,
 ]);
-
+echo "<pre>";
 var_dump($upsertedDocument);
+echo "</pre>";

@@ -3,21 +3,16 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 
 
+
+
 $collection = (new MongoDB\Client)->test->users;
-$collection->drop();
-
-$insertOneResult_bob = $collection->insertOne(['name' => 'Bob', 'state' => 'ny']);
-
-$bob_oid = $insertOneResult_bob->getInsertedId();
-
-$insertOneResult_alice =$collection->insertOne(['name' => 'Alice', 'state' => 'ny']);
-$alice_oid = $insertOneResult_alice->getInsertedId();
-
-var_dump($bob_oid);
-var_dump($alice_oid);
-
-$updateResult = $collection->updateOne(
-    ['_id' => new MongoDB\BSON\ObjectId($bob_oid)],
+//$collection->drop();
+//
+//$collection->insertOne(['name' => 'Bob', 'state' => 'ny', 'country' => 'us']);
+//$collection->insertOne(['name' => 'Alice', 'state' => 'ny']);
+//$collection->insertOne(['name' => 'Sam', 'state' => 'ny']);
+$updateResult = $collection->updateMany(
+    ['state' => 'ny'],
     ['$set' => ['country' => 'us']]
 );
 
