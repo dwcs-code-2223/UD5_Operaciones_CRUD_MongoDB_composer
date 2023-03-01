@@ -8,6 +8,7 @@ $cursor = $collection->find(
     [
         'limit' => 5,
         'sort' => ['pop' => -1],
+        'skip' => 3
     ]
 );
 
